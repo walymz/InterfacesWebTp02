@@ -20,7 +20,7 @@ public class Connector {
     // MARIADB:
     private static String driver="org.mariadb.jdbc.Driver";
     private static String vendor="mariadb";
-  
+  /*
     ///////////// REMOTA FREEDB BD NEGOCIOROPAWEB:////////////
     private static String server="freedb.tech";
     private static String port="3306";
@@ -37,7 +37,7 @@ public class Connector {
     private static String pass="O1d_3PdcBcQI5QcTkGW9ePfJOTR9dNvy";
     private static String params="";  
     
- /* 
+ */ 
     ///////////// BD LOCAL ///////////////
     
     private static String server="localhost";
@@ -45,9 +45,7 @@ public class Connector {
     private static String db="negocioWebRopa";
     private static String params="?serverTimezone=UTC";
     private static String user="root";
-    private static String pass="";
-   
-   */     
+    private static String pass="";  
   
     
     private static String url="jdbc:"+vendor+"://"+server+":"+port+"/"+db+params;
