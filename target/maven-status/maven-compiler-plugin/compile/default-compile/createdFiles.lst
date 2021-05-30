@@ -1,0 +1,15 @@
+ar\org\centro8\curso\java\aplicaciones\repositories\jdbc\ClienteRepository.class
+ar\org\centro8\curso\java\web\utils\TableHtml.class
+ar\org\centro8\curso\java\connectors\Connector.class
+ar\org\centro8\curso\java\aplicaciones\enums\TipoDocumento.class
+ar\org\centro8\curso\java\aplicaciones\repositories\interfaces\I_ClienteRepository.class
+ar\org\centro8\curso\java\aplicaciones\test\TestArticuloRepository.class
+ar\org\centro8\curso\java\aplicaciones\repositories\interfaces\I_ArticuloRepository.class
+ar\org\centro8\curso\java\web\test\TestConnector.class
+ar\org\centro8\curso\java\aplicaciones\repositories\jdbc\ArticuloRepository.class
+ar\org\centro8\curso\java\aplicaciones\test\TestConnector.class
+ar\org\centro8\curso\java\aplicaciones\test\TestClienteRepository.class
+ar\org\centro8\curso\java\aplicaciones\entities\Articulo.class
+ar\org\centro8\curso\java\aplicaciones\enums\Tipo.class
+ar\org\centro8\curso\java\aplicaciones\entities\Cliente.class
+ar\org\centro8\curso\java\aplicaciones\enums\Temporada.class

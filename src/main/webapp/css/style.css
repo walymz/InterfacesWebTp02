@@ -9,6 +9,14 @@
 
 body{
     background-color: whitesmoke;
+   
+}
+
+.iconos {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .principal{
@@ -32,6 +40,7 @@ h1{
 
 .card{
    padding-bottom: 25px;
+   margin-top: 5px;
 }
 
 .titulo{

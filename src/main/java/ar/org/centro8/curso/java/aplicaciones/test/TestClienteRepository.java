@@ -13,10 +13,10 @@ public class TestClienteRepository {
        
        
        ////////////// SAVE ////////////////////   
-       cr.save(new Cliente("Carla", "Perez", 23, TipoDocumento.PASS,"12345672"));
-       cr.save(new Cliente("Pedro", "Pereida", 30,  TipoDocumento.PASS,"22345672"));
-       cr.save(new Cliente("José", "Figueroa", 18, TipoDocumento.PASS,"32345672"));
-       cr.save(new Cliente("Jonas", "Martinez", 21, TipoDocumento.PASS,"42345672"));
+       cr.save(new Cliente("Carla", "Perez", 23, TipoDocumento.DNI,"11345672"));
+       cr.save(new Cliente("Pedro", "Pereida", 30,  TipoDocumento.DNI,"21345672"));
+       cr.save(new Cliente("José", "Figueroa", 18, TipoDocumento.DNI,"31345672"));
+       cr.save(new Cliente("Jonas", "Martinez", 21, TipoDocumento.DNI,"41345672"));
               
        ////////////////   REMOVE Y BYID   //////////////////////
        cr.remove(cr.getById(12));
