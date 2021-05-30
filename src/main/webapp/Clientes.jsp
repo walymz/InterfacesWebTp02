@@ -15,15 +15,13 @@
 <%@page import="ar.org.centro8.curso.java.connectors.Connector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% I_ClienteRepository cr = new ClienteRepository(Connector.getConnection()); %>
+
 <!DOCTYPE html>
 <html lang="es">
    <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      
      <title>Cliente</title>
-
-     <!-- CSS only -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
      <!-- Hoja de estilo -->
      <link rel="stylesheet" type="text/css" href="css/style.css"/>
    </head>
@@ -121,36 +119,53 @@
                        out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
                  }
            %>
-         
+        
            <div class="card">
               <div class="card-body">               
                      <form class="row g-7">
                          <div class="d-grid gap-2 d-md-flex justify-content-center">
                             <div class="col-auto">  
-                                <input type="text" class="form-control" id="buscarApellido" name="buscarApellido" placeholder="Buscar por apellido" aria-label="Buscar Apellido">
+                                <input type="text" class="form-control" id="buscarNombre" name="buscarNombre" placeholder="Buscar por nombre" aria-label="buscarNombre">
                             </div>
                             <div class="col-auto">  
-                               <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
+                                <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
                             </div>
+                            <div class="col-auto">  
+                                <input type="text" class="form-control" id="buscarApellido" name="buscarApellido" placeholder="Buscar por apellido" aria-label="buscarApellido">
+                            </div>
+                            <div class="col-auto">  
+                                <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
+                            </div> 
                         </div>
                      </form>
                </div>
              </div>
              <h5 class="card-title principal">Clientes registrados:</h5>
-         </div> 
+         </div>
+           <div id="tabla"></div>
                  <%
-                    //////////////////////// MOSTRAR CLIENTES EN TABLA  ////////////////////////////  
-                  
+                    //////////////////////// MOSTRAR CLIENTES EN TABLA  //////////////////////////// 
+                   
+                   String tablaHTML="";
                    String estilo="class=\"table table-striped\"";
                    
                    String buscarApellido = request.getParameter("buscarApellido");
-                   if (buscarApellido == null) buscarApellido = "";
-                       
-                   out.println(
-                      new TableHtml<Cliente>()
-                           .getTable(cr.getLikeApellido(buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp")
-                   );
-                %>            
-     
-    </body>
+                   String buscarNombre = request.getParameter("buscarNombre");
+                   if (buscarApellido==null) buscarApellido="";
+                   if (buscarNombre==null) buscarNombre="";
+                   
+                   if (buscarApellido.isBlank() && buscarNombre.isBlank()) tablaHTML = new TableHtml<Cliente>().getTable(cr.getAll(), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
+                   
+                   if (!buscarApellido.isBlank())
+                        tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeApellido(buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
+                   
+                   if (!buscarNombre.isBlank())
+                        tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeNombre(buscarNombre), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
+                      
+                      out.println("<div id=\"contenido\">"+ tablaHTML +"</div>");
+                %>
+               
+       <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
+   </body> 
 </html>

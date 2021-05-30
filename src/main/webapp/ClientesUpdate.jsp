@@ -38,7 +38,7 @@
                         try {
                             cliente = cr.getById(Integer.parseInt(request.getParameter("id")));
                         } catch (Exception e) {
-                            out.println("<h5>Parámetro no validos</h5><br>");
+                            out.println("<h5>¡Parámetro no validos!</h5><br>");
                             out.println("<a href=\"Cliente.jsp\" class=\"btn btn-success btn-lg\">Volver</a>");
                         }
                         if (cliente != null) {
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col-2">
                                         <label for="tipoDocumento" class="form-label">Tipo documento:</label>
-                                        <select id="tipoDocumento" name="tipoDocumento" required>
+                                        <select id="tipoDocumento" class="form-select" name="tipoDocumento" required>
                                             <%
                                                 for (TipoDocumento t : TipoDocumento.values()) {
                                                     if (t == cliente.getTipoDocumento()) {

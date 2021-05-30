@@ -35,7 +35,7 @@
                          cr.remove(cr.getById(Integer.parseInt(request.getParameter("id"))));
                          out.println("<h5 class=\"card-title\">Cliente eliminado!</h5>");   
                     } catch (Exception e) { 
-                        out.println("<h5>No se pudo eliminar el cliente!</h5><br>");
+                        out.println("<h5>¡No se pudo eliminar el cliente!</h5><br>");
                         System.out.print("********************************");
                         System.out.print(LocalDateTime.now());
                         e.printStackTrace();

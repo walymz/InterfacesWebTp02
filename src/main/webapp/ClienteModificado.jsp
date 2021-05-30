@@ -48,10 +48,10 @@
                       
                     
                       cr.update(cliente);
-                      out.println("<h5 class=\"card-title\">El cliente "+ cliente.getNombre()+" "+cliente.getApellido()+" con el id="+cliente.getId()+" ha sido actualizado!</h5>");   
+                      out.println("<h5 class=\"card-title\">El cliente "+ cliente.getNombre()+" "+cliente.getApellido()+" con el id="+cliente.getId()+" ha sido actualizado</h5>");   
                       
                     } catch (Exception e) { 
-                        out.println("<h5>Parámetros no validos!</h5><br>");
+                        out.println("<h5>¡Parámetros no validos!</h5><br>");
                         System.out.print("********************************");
                         System.out.print(LocalDateTime.now());
                         e.printStackTrace();

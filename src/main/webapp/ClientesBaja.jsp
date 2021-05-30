@@ -35,7 +35,7 @@
                         try {
                             cliente = cr.getById(Integer.parseInt(request.getParameter("id")));
                             if (cliente != null) {
-                                out.println("<h5><center>¿Desea eliminar el cliente " + cliente.getNombre() + " " + cliente.getApellido() + " con el id= " + cliente.getId() + "?</center></h5>");   %>
+                                out.println("<h5 class=\"card-title card text-center\"> ¿Desea eliminar el cliente " + cliente.getNombre() + " " + cliente.getApellido() + " con el id= " + cliente.getId() + "?</center></h5>");   %>
 
                     <form action="ClienteBorrar.jsp">
                         <input type="text" value=<%out.println(request.getParameter("id").trim());%> name="id" readOnly hidden/>
@@ -49,7 +49,7 @@
                     <% }
                     } catch (Exception e) {  %>
                     <div class="card-footer text-muted text-center">
-                        <h5>Parámetros no validos</h5><br>
+                        <h5>¡Parámetros no validos!</h5><br>
                         <a href="Clientes.jsp" class="btn btn-success btn-lg">Volver</a>
                     </div>
                     <%   
