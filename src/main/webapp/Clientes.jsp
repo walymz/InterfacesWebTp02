@@ -94,30 +94,31 @@
          
            <%        
                 //////////////////////// INSERTAR CLIENTE NUEVO ////////////////////////////  
-             try {
-                    String nombre                       =        request.getParameter("nombre");
-                    String apellido                     =        request.getParameter("apellido");
-                    int    edad                         =        Integer.parseInt(request.getParameter("edad"));
-                    String direccion                    =        request.getParameter("direccion");
-                    String email                        =        request.getParameter("email");
-                    String telefono                     =        request.getParameter("telefono");
-                    TipoDocumento tipoDocumento         =        TipoDocumento.valueOf(request.getParameter("tipoDocumento"));
-                    String numeroDocumento              =        request.getParameter("numeroDocumento");
-                    
-                    Cliente cliente = new Cliente(nombre, apellido, edad, direccion, telefono, email, tipoDocumento, numeroDocumento);
-                    cr.save(cliente);
-                    
-                    if(cliente.getId()!=0){
-                        out.print("<h5>Se guardó el cliente id="+cliente.getId()+"</h5>");
-                    }
-                    else{
-                        out.print("<h5>No se pudo dar de alta al cliente</h5>");
-                    }
-                    
+           try {
+                   try {
+                       String nombre = request.getParameter("nombre");
+                       String apellido = request.getParameter("apellido");
+                       int edad = Integer.parseInt(request.getParameter("edad"));
+                       String direccion = request.getParameter("direccion");
+                       String email = request.getParameter("email");
+                       String telefono = request.getParameter("telefono");
+                       TipoDocumento tipoDocumento = TipoDocumento.valueOf(request.getParameter("tipoDocumento"));
+                       String numeroDocumento = request.getParameter("numeroDocumento");
 
-                 } catch (Exception e) {
-                       out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
-                 }
+                       Cliente cliente = new Cliente(nombre, apellido, edad, direccion, telefono, email, tipoDocumento, numeroDocumento);
+                       cr.save(cliente);
+
+                       if (cliente.getId() != 0) {
+                           out.print("<h5>Se guardó el cliente id=" + cliente.getId() + "</h5>");
+                       } else {
+                           out.print("<h5>No se pudo dar de alta al cliente</h5>");
+                       }
+                   } catch (NumberFormatException e) {
+                       out.println("<p Debe completar los parámetros</p>");
+                   }
+               } catch (Exception e) {
+                   out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
+               }
            %>
         
            <div class="card">
