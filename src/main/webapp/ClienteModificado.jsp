@@ -21,9 +21,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cliente modificado</title>
           <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
     </head>
     <body>
            <div class="jumbotron">
@@ -33,7 +30,6 @@
           <div class="card text-center">
             <div class="card-body"> 
               <%
-                 // out.print(request.getParameter("id"));
                 try {
                     
                       Cliente cliente = cr.getById(Integer.parseInt(request.getParameter("id")));
@@ -64,6 +60,8 @@
             </div>
     
          </div>
-      </div> 
+      </div>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     </body>
 </html>

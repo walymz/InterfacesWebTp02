@@ -114,7 +114,7 @@
                            out.print("<h5>No se pudo dar de alta al cliente</h5>");
                        }
                    } catch (NumberFormatException e) {
-                       out.println("<p Debe completar los parámetros</p>");
+                       out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
                    }
                } catch (Exception e) {
                    out.println("<p class=\"principal\"> Debe completar todos los campos</p>");

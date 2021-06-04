@@ -19,9 +19,6 @@
         <title>Eliminar Cliente</title>
         <!-- CSS only -->
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <!-- JavaScript Bundle with Popper -->
     </head>
     <body>
         <div class="jumbotron">
@@ -35,7 +32,7 @@
                         try {
                             cliente = cr.getById(Integer.parseInt(request.getParameter("id")));
                             if (cliente != null) {
-                                out.println("<h5 class=\"card-title card text-center\"> ¿Desea eliminar el cliente " + cliente.getNombre() + " " + cliente.getApellido() + " con el id= " + cliente.getId() + "?</center></h5>");   %>
+                                out.println("<h5 class=\"card-title card text-center\"> ¿Desea eliminar el cliente " + cliente.getNombre() + " " + cliente.getApellido() + " con el id= " + cliente.getId() + "?</h5>");   %>
 
                     <form action="ClienteBorrar.jsp">
                         <input type="text" value=<%out.println(request.getParameter("id").trim());%> name="id" readOnly hidden/>
@@ -60,6 +57,7 @@
 
             </div>       
         </div>                  
-
+      <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     </body>
 </html>
