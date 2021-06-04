@@ -45,8 +45,8 @@
                                     apellido,
                                     edad,
                                     direccion,
-                                    telefono,
                                     email,
+                                    telefono,
                                     tipoDocumento,
                                     numeroDocumento
                             );

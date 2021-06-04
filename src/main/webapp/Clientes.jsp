@@ -105,7 +105,7 @@
                        TipoDocumento tipoDocumento = TipoDocumento.valueOf(request.getParameter("tipoDocumento"));
                        String numeroDocumento = request.getParameter("numeroDocumento");
 
-                       Cliente cliente = new Cliente(nombre, apellido, edad, direccion, telefono, email, tipoDocumento, numeroDocumento);
+                       Cliente cliente = new Cliente(nombre, apellido, edad, direccion, email,telefono, tipoDocumento, numeroDocumento);
                        cr.save(cliente);
 
                        if (cliente.getId() != 0) {
