@@ -47,42 +47,42 @@
                                     <div class="col-3">
                                         <input type="text" class="form-control" id="id" name="id" value=<% out.println(cliente.getId());%> hidden>
                                         <label for="nombre" class="form-label">Nombre:</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" value=<% out.println(cliente.getNombre());%> minlength="3" maxlength="20" placeholder="Nombre" aria-label="nombre" required>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<% out.println(cliente.getNombre());%>" minlength="3" maxlength="20" placeholder="Nombre" aria-label="nombre" required>
                                         <div class="invalid-feedback">
                                             Por favor el nombre debe tener entre 3 y 20 caracteres.
                                         </div>
                                     </div>
                                     <div class="col-3"> 
                                         <label for="apellido" class="form-label">Apellido:</label>
-                                        <input type="text" class="form-control" id="apellido" name="apellido" value=<% out.println(cliente.getApellido());%> minlength="3" maxlength="20" placeholder="Apellido" aria-label="apellido" required>
+                                        <input type="text" class="form-control" id="apellido" name="apellido" value="<% out.println(cliente.getApellido());%>" minlength="3" maxlength="20" placeholder="Apellido" aria-label="apellido" required>
                                         <div class="invalid-feedback">
                                             Por favor el apellido debe tener entre 3 y 20 caracteres.
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <label for="edad" class="form-label">Edad:</label>
-                                        <input type="number" class="form-control" id="edad" name="edad" value=<% out.println(cliente.getEdad());%> placeholder="Edad" aria-label="edad" required> 
+                                        <input type="number" class="form-control" id="edad" name="edad" value=<% out.println(cliente.getEdad());%> placeholder="Edad" aria-label="edad"> 
                                         <div class="invalid-feedback">
                                             Por favor la edad debe ser un valor numérico.
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <label for="direccion" class="form-label">Direccion:</label>
-                                        <input type="text" class="form-control" id="direccion" name="direccion" value=<% out.println(cliente.getDireccion());%> minlength="3" maxlength="50" placeholder="Dirección" aria-label="direccion" required> 
+                                        <input type="text" class="form-control" id="direccion" name="direccion" value="<% out.println(cliente.getDireccion());%>" minlength="3" maxlength="50" placeholder="Dirección" aria-label="direccion"> 
                                         <div class="invalid-feedback">
                                             Por favor la dirección debe tener entre 3 y 50 caracteres.
                                         </div>    
                                     </div>
                                     <div class="col-5">
                                         <label for="email" class="form-label">Email:</label>
-                                        <input type="email" class="form-control" id="email" name="email" value=<% out.println(cliente.getEmail());%> minlength="3" maxlength="30" placeholder="Email" aria-label="email" required> 
+                                        <input type="email" class="form-control" id="email" name="email" value="<% out.println(cliente.getEmail());%>" minlength="3" maxlength="30" placeholder="Email" aria-label="email"> 
                                         <div class="invalid-feedback">
                                             Por favor el email debe contener entre 3 y 30 caracteres.
                                         </div>    
                                     </div> 
                                     <div class="col-2">
                                         <label for="telefono" class="form-label">Teléfono:</label>
-                                        <input type="number" class="form-control" id="telefono" name="telefono" value=<% out.println(cliente.getTelefono());%> placeholder="Teléfono" aria-label="telefono" required> 
+                                        <input type="number" class="form-control" id="telefono" name="telefono" value=<% out.println(cliente.getTelefono());%> placeholder="Teléfono" aria-label="telefono"> 
                                         <div class="invalid-feedback">
                                             Por favor el teléfono debe tener entre 3 y 25 números.
                                         </div>    

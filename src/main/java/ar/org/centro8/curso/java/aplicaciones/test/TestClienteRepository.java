@@ -13,10 +13,10 @@ public class TestClienteRepository {
        
        
        ////////////// SAVE ////////////////////   
-       cr.save(new Cliente("Carla", "Perez", 23, TipoDocumento.DNI,"11345672"));
-       cr.save(new Cliente("Pedro", "Pereida", 30,  TipoDocumento.DNI,"21345672"));
-       cr.save(new Cliente("José", "Figueroa", 18, TipoDocumento.DNI,"31345672"));
-       cr.save(new Cliente("Jonas", "Martinez", 21, TipoDocumento.DNI,"41345672"));
+       cr.save(new Cliente("Carla", "Perez", 23, TipoDocumento.DNI,"11345600"));
+       cr.save(new Cliente("Pedro", "Pereida", 30,  TipoDocumento.DNI,"21345601"));
+       cr.save(new Cliente("José", "Figueroa", 18, TipoDocumento.DNI,"31345603"));
+       cr.save(new Cliente("Jonas", "Martinez", 21, TipoDocumento.DNI,"41345604"));
               
        ////////////////   REMOVE Y BYID   //////////////////////
        cr.remove(cr.getById(12));
@@ -38,6 +38,10 @@ public class TestClienteRepository {
         /////////////////////   LIKENOMBRE   ////////////////////////
        System.out.println("***** Clientes cuyo nombre comienza por J ********");
        cr.getLikeNombre("J").forEach(System.out::println);
+       
+       /////////////////////   LIKENOMBREYAPELLIDO   ////////////////////////
+       System.out.println("***** Clientes cuyo nombre comienza por P y apellido por P ********");
+       cr.getLikeNombreYApellido("P", "P").forEach(System.out::println);
     }
     
 }

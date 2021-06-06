@@ -18,21 +18,21 @@
 
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     
-     <title>Cliente</title>
-     <!-- Hoja de estilo -->
-     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-   </head>
-   <body>
-     <div class="jumbotron">
-         <h1>Mantenimiento de Clientes</h1>
-     </div>  
-     <div class="container">
-       <div class="card bg-light">
-           <h5 class="card-title principal">Nuevo Cliente:</h5>
-              <div class="card-body d-grid gap-2 pb-0 d-md-flex justify-content-center">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>Cliente</title>
+        <!-- Hoja de estilo -->
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Mantenimiento de Clientes</h1>
+        </div>  
+        <div class="container">
+            <div class="card bg-light">
+                <h5 class="card-title principal">Nuevo Cliente:</h5>
+                <div class="card-body d-grid gap-2 pb-0 d-md-flex justify-content-center">
                     <form class="row g-4">
                         <div class="col-3"> 
                             <input type="text" class="form-control" id="nombre" name="nombre" minlength="3" maxlength="20" placeholder="Nombre" aria-label="Nombre" required>
@@ -47,34 +47,34 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" aria-label="edad" required> 
+                            <input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" aria-label="edad"> 
                             <div class="invalid-feedback">
                                 Por favor la edad debe ser un valor numérico.
                             </div>
                         </div>
-                         <div class="col-4">
-                            <input type="text" class="form-control" id="direccion" name="direccion" minlength="3" maxlength="50" placeholder="Dirección" aria-label="direccion" required> 
+                        <div class="col-4">
+                            <input type="text" class="form-control" id="direccion" name="direccion" minlength="3" maxlength="50" placeholder="Dirección" aria-label="direccion"> 
                             <div class="invalid-feedback">
                                 Por favor la dirección debe tener entre 3 y 50 caracteres.
                             </div>    
                         </div>
                         <div class="col-5">
-                            <input type="email" class="form-control" id="email" name="email" minlength="3" maxlength="30" placeholder="Email" aria-label="email" required> 
+                            <input type="email" class="form-control" id="email" name="email" minlength="3" maxlength="30" placeholder="Email" aria-label="email"> 
                             <div class="invalid-feedback">
                                 Por favor el email debe contener entre 3 y 30 caracteres.
                             </div>    
                         </div> 
-                         <div class="col-2">
-                            <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" aria-label="telefono" required>   
+                        <div class="col-2">
+                            <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" aria-label="telefono">   
                         </div>
                         <div class="col-2">
                             <select class="form-select" id="tipo" name="tipoDocumento" required>
                                 <option selected disabled value="">Tipo de Documento</option>
-                                 <%
-                                   for(TipoDocumento t: TipoDocumento.values()){
-                                       out.print("<option value="+t.toString()+">"+t.toString()+"</option>");
-                                   }
-                                 %>
+                                <%
+                                    for (TipoDocumento t : TipoDocumento.values()) {
+                                        out.print("<option value=" + t.toString() + ">" + t.toString() + "</option>");
+                                    }
+                                %>
                             </select>
                             <div class="invalid-feedback">
                                 Por favor seleccione un tipo de documento.
@@ -88,49 +88,52 @@
                             <button class="btn btn-success btn-lg" type="reset">Cancelar</button>
                         </div>   
                     </form>   
-                 </div>     
-                   
-           </div>
-         
-           <%        
+                </div>     
+
+            </div>
+
+            <%
                 //////////////////////// INSERTAR CLIENTE NUEVO ////////////////////////////  
-           try {
-                   try {
-                       String nombre = request.getParameter("nombre");
-                       String apellido = request.getParameter("apellido");
-                       int edad = Integer.parseInt(request.getParameter("edad"));
-                       String direccion = request.getParameter("direccion");
-                       String email = request.getParameter("email");
-                       String telefono = request.getParameter("telefono");
-                       TipoDocumento tipoDocumento = TipoDocumento.valueOf(request.getParameter("tipoDocumento"));
-                       String numeroDocumento = request.getParameter("numeroDocumento");
+                try {
 
-                       Cliente cliente = new Cliente(nombre, apellido, edad, direccion, email,telefono, tipoDocumento, numeroDocumento);
-                       cr.save(cliente);
+                    String nombre   = request.getParameter("nombre");
+                    String apellido = request.getParameter("apellido");
+                    String e        = request.getParameter("edad");
+                    if (e.isEmpty() || e==null) e="0"; 
+                    int edad = Integer.parseInt(e);
+                    String direccion = request.getParameter("direccion");
+                    String email = request.getParameter("email");
+                    String telefono = request.getParameter("telefono");
+                    TipoDocumento tipoDocumento = TipoDocumento.valueOf(request.getParameter("tipoDocumento"));
+                    String numeroDocumento = request.getParameter("numeroDocumento");
 
-                       if (cliente.getId() != 0) {
-                           out.print("<h5>Se guardó el cliente id=" + cliente.getId() + "</h5>");
-                       } else {
-                           out.print("<h5>No se pudo dar de alta al cliente</h5>");
-                       }
-                   } catch (NumberFormatException e) {
-                       out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
-                   }
-               } catch (Exception e) {
-                   out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
-               }
-           %>
-        
-           <div class="card">
-              <div class="card-body">               
-                     <form class="row g-7">
-                         <div class="d-grid gap-2 d-md-flex justify-content-center">
+                    Cliente cliente = new Cliente(nombre, apellido, edad, direccion, email, telefono, tipoDocumento, numeroDocumento);
+                    cr.save(cliente);
+
+                    if (cliente.getId() != 0) {
+                        out.print("<h5>Se guardó el cliente id=" + cliente.getId() + "</h5>");
+                    } else {
+                        out.print("<h5>No se pudo dar de alta al cliente</h5>");
+                    }
+                } catch (NumberFormatException e) {
+                    out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
+                } catch (Exception e) {
+                    out.println("<p class=\"principal\"> Debe completar todos los campos</p>");
+                }
+            %>
+
+            <div class="card">
+                <div class="card-body">               
+                    <form class="row g-7">
+                        <div class="d-grid gap-2 d-md-flex justify-content-center">
                             <div class="col-auto">  
                                 <input type="text" class="form-control" id="buscarNombre" name="buscarNombre" placeholder="Buscar por nombre" aria-label="buscarNombre">
                             </div>
-                            <div class="col-auto">  
-                                <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
-                            </div>
+                            <!--   
+                              <div class="col-auto">  
+                                  <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
+                              </div>
+                            -->
                             <div class="col-auto">  
                                 <input type="text" class="form-control" id="buscarApellido" name="buscarApellido" placeholder="Buscar por apellido" aria-label="buscarApellido">
                             </div>
@@ -138,35 +141,44 @@
                                 <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
                             </div> 
                         </div>
-                     </form>
-               </div>
-             </div>
-             <h5 class="card-title principal">Clientes registrados:</h5>
-         </div>
-           <div id="tabla"></div>
-                 <%
+                    </form>
+                </div>
+            </div>
+            <h5 class="card-title principal">Clientes registrados:</h5>
+
+            <div id="tabla">
+                <%
                     //////////////////////// MOSTRAR CLIENTES EN TABLA  //////////////////////////// 
+                    String tablaHTML = "";
+                    String estilo = "class=\"table table-striped\"";
+
+                    String buscarApellido = request.getParameter("buscarApellido");
+                    String buscarNombre = request.getParameter("buscarNombre");
+
+                    if (buscarApellido == null) {
+                        buscarApellido = "";
+                    }
+                    if (buscarNombre == null) {
+                        buscarNombre = "";
+                    }
+
+                    tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeNombreYApellido(buscarNombre, buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
+
+                    /*  
+                  if (buscarApellido.isBlank() && buscarNombre.isBlank()) tablaHTML = new TableHtml<Cliente>().getTable(cr.getAll(), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
                    
-                   String tablaHTML="";
-                   String estilo="class=\"table table-striped\"";
+                  if (!buscarApellido.isBlank())
+                       tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeApellido(buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
                    
-                   String buscarApellido = request.getParameter("buscarApellido");
-                   String buscarNombre = request.getParameter("buscarNombre");
-                   if (buscarApellido==null) buscarApellido="";
-                   if (buscarNombre==null) buscarNombre="";
-                   
-                   if (buscarApellido.isBlank() && buscarNombre.isBlank()) tablaHTML = new TableHtml<Cliente>().getTable(cr.getAll(), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
-                   
-                   if (!buscarApellido.isBlank())
-                        tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeApellido(buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
-                   
-                   if (!buscarNombre.isBlank())
-                        tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeNombre(buscarNombre), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
-                      
-                      out.println("<div id=\"contenido\">"+ tablaHTML +"</div>");
+                  if (!buscarNombre.isBlank())
+                       tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeNombre(buscarNombre), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
+                     */
+                    out.println("<div id=\"contenido\">" + tablaHTML + "</div>");
+
                 %>
-               
-       <!-- CSS only -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
-   </body> 
+            </div>
+        </div>  
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
+    </body> 
 </html>

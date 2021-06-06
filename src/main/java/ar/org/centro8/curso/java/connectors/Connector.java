@@ -22,14 +22,14 @@ public class Connector {
     private static String vendor="mariadb";
   
     ///////////// REMOTA FREEDB BD NEGOCIOROPAWEB:////////////
-/*    
+    
     private static String server="freedb.tech";
     private static String port="3306";
     private static String db="freedbtech_negocioRopaWeb";
     private static String user="freedbtech_negocioRopaWeb";
     private static String pass="centro8";
     private static String params="";  
-  /*
+ /*
     ///////////// REMOTA POSTGRE BD NEGOCIOROPAWEB:////////////
     private static String server="motty.db.elephantsql.com";
     private static String port="5432";
@@ -38,7 +38,7 @@ public class Connector {
     private static String pass="O1d_3PdcBcQI5QcTkGW9ePfJOTR9dNvy";
     private static String params="";  
     
- */
+ /*
     ///////////// BD LOCAL ///////////////
     
     private static String server="localhost";
@@ -47,7 +47,7 @@ public class Connector {
     private static String params="?serverTimezone=UTC";
     private static String user="root";
     private static String pass="";
-   
+ */  
     
     private static String url="jdbc:"+vendor+"://"+server+":"+port+"/"+db+params;
     
