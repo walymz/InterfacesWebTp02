@@ -126,16 +126,28 @@
                 <div class="card-body">               
                     <form class="row g-7">
                         <div class="d-grid gap-2 d-md-flex justify-content-center">
-                            <div class="col-auto">  
-                                <input type="text" class="form-control" id="buscarNombre" name="buscarNombre" placeholder="Buscar por nombre" aria-label="buscarNombre">
+                             <div class="col-auto">  
+                                 <label>Buscar por: </label>
                             </div>
-                            <!--   
-                              <div class="col-auto">  
-                                  <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
-                              </div>
-                            -->
                             <div class="col-auto">  
-                                <input type="text" class="form-control" id="buscarApellido" name="buscarApellido" placeholder="Buscar por apellido" aria-label="buscarApellido">
+                                <input type="text" class="form-control" id="buscarNombre" name="buscarNombre" placeholder="Nombre" aria-label="buscarNombre">
+                            </div>
+                            <div class="col-auto">  
+                                <input type="text" class="form-control" id="buscarApellido" name="buscarApellido" placeholder="Apellido" aria-label="buscarApellido">
+                            </div>
+                            <div class="col-2">  
+                                 <select class="form-select" id="buscarTipoDocumento" name="buscarTipoDocumento">
+                                     <option selected disabled value="">Tipo de Documento</option>
+                                     <%
+                                         for (TipoDocumento t : TipoDocumento.values()) {
+                                             out.print("<option value=" + t.toString() + ">" + t.toString() + "</option>");
+                                         }
+                                     %>
+                                 </select>
+                            </div>
+                           
+                             <div class="col-auto">  
+                                <input type="text" class="form-control" id="buscarNumeroDocumento" name="buscarNumeroDocumento" placeholder="Número de documento" aria-label="buscarNumeroDocumento">
                             </div>
                             <div class="col-auto">  
                                 <button class="btn btn-outline-success me-md-2" type="submit">Aceptar</button>
@@ -152,9 +164,17 @@
                     String tablaHTML = "";
                     String estilo = "class=\"table table-striped\"";
 
+                    String buscarTipoDocumento = request.getParameter("buscarTipoDocumento");
+                    String buscarNumeroDocumento = request.getParameter("buscarNumeroDocumento");
                     String buscarApellido = request.getParameter("buscarApellido");
                     String buscarNombre = request.getParameter("buscarNombre");
 
+                    if (buscarTipoDocumento == null) {
+                        buscarTipoDocumento = "";
+                    }
+                    if (buscarNumeroDocumento == null) {
+                        buscarNumeroDocumento = "";
+                    }
                     if (buscarApellido == null) {
                         buscarApellido = "";
                     }
@@ -162,7 +182,7 @@
                         buscarNombre = "";
                     }
 
-                    tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeNombreYApellido(buscarNombre, buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
+                    tablaHTML = new TableHtml<Cliente>().getTable(cr.getLikeDocumentoNombreYApellido(buscarTipoDocumento, buscarNumeroDocumento, buscarNombre, buscarApellido), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
 
                     /*  
                   if (buscarApellido.isBlank() && buscarNombre.isBlank()) tablaHTML = new TableHtml<Cliente>().getTable(cr.getAll(), estilo, "ClientesUpdate.jsp", "ClientesBaja.jsp");
