@@ -32,15 +32,15 @@ public class TestClienteRepository {
        cr.getAll().forEach(System.out::println);
        
        /////////////////////   LIKEAPELLIDO   ////////////////////////
-       System.out.println("***** Clientes cuyo apellido comienza por P ********");
+       System.out.println("***** Clientes cuyo apellido contiene P ********");
        cr.getLikeApellido("P").forEach(System.out::println);
        
         /////////////////////   LIKENOMBRE   ////////////////////////
-       System.out.println("***** Clientes cuyo nombre comienza por J ********");
+       System.out.println("***** Clientes cuyo nombre contiene J ********");
        cr.getLikeNombre("J").forEach(System.out::println);
        
        /////////////////////   LIKENOMBREYAPELLIDO   ////////////////////////
-       System.out.println("***** Clientes cuyo nombre comienza por P y apellido por P ********");
+       System.out.println("***** Clientes cuyo nombre contiene P y apellido contiene P ********");
        cr.getLikeNombreYApellido("P", "P").forEach(System.out::println);
        
         /////////////////////   LIKEDOCUMENTO   ////////////////////////
@@ -48,7 +48,7 @@ public class TestClienteRepository {
        cr.getLikeDocumento(TipoDocumento.DNI.toString(), "41345606").forEach(System.out::println);
        
         /////////////////////   LIKEDOCUMENTONOMBREYAPELLIDO   ////////////////////////
-       System.out.println("***** Cliente con documento DNI con documento 3 y cuyo nombre comience por J y su apellido por F ********");
+       System.out.println("***** Cliente con documento DNI cuyo documento contiene 3 y cuyo nombre contiene J y su apellido contiene F ********");
        cr.getLikeDocumentoNombreYApellido(TipoDocumento.DNI.toString(), "3", "J", "F").forEach(System.out::println);
     }
     
